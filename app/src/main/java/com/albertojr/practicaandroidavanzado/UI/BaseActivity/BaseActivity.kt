@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado
+package com.albertojr.practicaandroidavanzado.UI.BaseActivity
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -10,9 +10,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class BaseActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

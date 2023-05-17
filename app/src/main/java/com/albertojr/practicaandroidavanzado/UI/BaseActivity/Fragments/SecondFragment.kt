@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado
+package com.albertojr.practicaandroidavanzado.UI.BaseActivity.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.databinding.FragmentSecondBinding
 
 /**
