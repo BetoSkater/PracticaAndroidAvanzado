@@ -13,7 +13,7 @@ import android.view.MenuItem
 import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.databinding.ActivityMainBinding
 
-class BaseActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

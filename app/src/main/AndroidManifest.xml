@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PracticaAndroidAvanzado"
         tools:targetApi="31">
         <activity
-            android:name=".UI.BaseActivity.BaseActivity"
+            android:name=".UI.BaseActivity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".UI.Login.LoginActivity"
