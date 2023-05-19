@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado.UI.BaseActivity.Adapters
+package com.albertojr.practicaandroidavanzado.UI.MainActivity.Adapters
 
 class RecyclerViewListAdapter(
    // private val heroesList: MutableList<Heroe>,

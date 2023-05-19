@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado.UI.BaseActivity.Fragments
+package com.albertojr.practicaandroidavanzado.UI.MainActivity.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -42,4 +42,6 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

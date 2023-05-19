@@ -1,21 +1,18 @@
 package com.albertojr.practicaandroidavanzado.UI.Login
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.LifecycleOwner
 import com.albertojr.practicaandroidavanzado.R
-import com.albertojr.practicaandroidavanzado.UI.BaseActivity.MainActivity
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivity
 import com.albertojr.practicaandroidavanzado.databinding.ActivityLoginBinding
-import com.albertojr.practicaandroidavanzado.databinding.ActivityMainBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val viewModel = LoginViewModel()
     private val TAG_TOKEN = "MyToken"
-
+    private val TAG_PREFERENCES = "MyPreferences"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +28,10 @@ class LoginActivity : AppCompatActivity() {
             Log.d("LOGIN", it.toString())
             if(binding.cbSaveData.isChecked){
                 saveTokenInSharedPreferences(it)
-                launchMainActivity()
+                launchMainActivity(it)
+            }else{
+                //TODO start activity sending the token or somehing, stat the activity sengind the token
+                launchMainActivity(it)
             }
         }
 
@@ -54,28 +54,48 @@ class LoginActivity : AppCompatActivity() {
     //Method to try to retrieve a stored token from SharedPrefferences
     //TODO save the token in preferences in the companion object from the mainActivity.
     private fun saveTokenInSharedPreferences(token: String) {
+        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
+        sp.edit().putString(TAG_TOKEN, token).apply()
+
+    /*
         getPreferences(Context.MODE_PRIVATE).edit().apply(){
             putString(TAG_TOKEN, token).apply()
         }
+
+        */
     }
 
-    private fun checkIfTokenAlreadyExist():Boolean{
+    private fun checkIfTokenAlreadyExist():String{
+        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
+        val token = sp.getString(TAG_TOKEN,"")
+
+        token?.let {
+            return token
+        }
+        /*
         getPreferences(Context.MODE_PRIVATE).apply {
             val token = getString(TAG_TOKEN,"")
             token?.let {
                 return token.isNotEmpty()
             }
         }
-        return false
+
+         */
+        return ""
     }
 
-    private fun launchMainActivity(){
-        MainActivity.launch(this)
+    private fun launchMainActivity(token: String){
+        MainActivity.launch(this, token)
     }
 
     private fun skipLoginIfTokenExist(){
-        if(checkIfTokenAlreadyExist()){
-            launchMainActivity()
+        val token = checkIfTokenAlreadyExist()
+        if(token.isNotEmpty()){
+            launchMainActivity(token)
         }
     }
+
+
+
+
 }

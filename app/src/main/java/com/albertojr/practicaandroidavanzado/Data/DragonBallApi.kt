@@ -14,7 +14,19 @@ interface DragonBallApi {
 
 
     //Retrieve heroes list
-
+    @POST("/api/heros/all")
+    //Header -> inyected in use, like the login
+    //Note to self: petition data = Bearer Token $TokenValue
+   // This petition has a body name = "" in order to retrieve all the heroes
+    suspend fun retrieveHeroes(@Header("Authorization") petitionData: String): List<GetResponseHeroes>
 
     //Update heroe favourite state
+
+    @POST("/api/data/herolike")
+    //Header Bearer Token $token
+    //Body: Heroe id
+    //This petition does not return a value.
+    suspend fun heroeIsLiked(@Header("Authorization") petitionData: String)
+
+
 }

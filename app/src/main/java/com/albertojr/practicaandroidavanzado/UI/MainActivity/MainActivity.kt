@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado.UI.BaseActivity
+package com.albertojr.practicaandroidavanzado.UI.MainActivity
 
 import android.content.Context
 import android.content.Intent
@@ -19,12 +19,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var viewModel: MainActivityViewModel
     companion object{
-        fun launch(context: Context){
+        private const val TAG_TOKEN = "MyToken"
+        private const val TAG_PREFERENCES = "MyPreferences"
+        fun launch(context: Context, token: String){
             val intent = Intent(context,MainActivity::class.java)
+            intent.putExtra(TAG_TOKEN, token)
             context.startActivity(intent)
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +40,13 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        //TODO assignate the token value to the MainActivityViewModel
+
+
+
+        setUpViewModelWithToken()
+
+        //  retrieveTokenFromSharedPreferences()
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -46,6 +57,8 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -67,5 +80,26 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+    private fun setUpViewModelWithToken() {
+        val token = intent.getStringExtra(TAG_TOKEN).toString()
+        viewModel = MainActivityViewModel(token)
+        viewModel.printToken()
+    }
+    fun retrieveTokenFromSharedPreferences(){
+
+        /*
+        getPreferences(Context.MODE_PRIVATE).apply {
+            //val token = getString(TAG_TOKEN,"")
+            token = getString(TAG_TOKEN,"").toString()
+            token?.let {
+                Log.d("MainActivity", "The token in mainActivity is $token")
+            }
+        }
+         */
+
+        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
+        val token = sp.getString(TAG_TOKEN,"")
+
     }
 }
