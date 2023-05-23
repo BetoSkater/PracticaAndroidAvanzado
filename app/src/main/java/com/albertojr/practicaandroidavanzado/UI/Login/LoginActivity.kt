@@ -1,5 +1,6 @@
 package com.albertojr.practicaandroidavanzado.UI.Login
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,8 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel = LoginViewModel()
     private val TAG_TOKEN = "MyToken"
     private val TAG_PREFERENCES = "MyPreferences"
+    private val TAG_EMAIL = "MyEmail"
+    private val TAG_PASSWROD = "MyPassword"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,17 +24,18 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        skipLoginIfTokenExist()
-
+    //    skipLoginIfTokenExist()
+        loadDataFromPreferences()
         //Retrieving performLogin result
         viewModel.login.observe(this){
             Log.d("LOGIN", it.toString())
             if(binding.cbSaveData.isChecked){
-                saveTokenInSharedPreferences(it)
-                launchMainActivity(it)
+             //   saveTokenInSharedPreferences(it)
+                saveDataInPreferences(binding.etEmail.text.toString(),binding.etPassword.text.toString())
+                launchMainActivity()
             }else{
                 //TODO start activity sending the token or somehing, stat the activity sengind the token
-                launchMainActivity(it)
+                launchMainActivity()
             }
         }
 
@@ -39,63 +43,35 @@ class LoginActivity : AppCompatActivity() {
             //TODO add validations
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-
             if(!email.isEmpty() && !password.isEmpty()){
                 viewModel.performLogin(email,password)
-
             }else{
                 binding.etEmail.setError("This field is empty or the email is invalid")
                 //TODO set more validations in case email or password are incorreect
             }
-
         }
-
-    }
-    //Method to try to retrieve a stored token from SharedPrefferences
-    //TODO save the token in preferences in the companion object from the mainActivity.
-    private fun saveTokenInSharedPreferences(token: String) {
-        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
-        sp.edit().putString(TAG_TOKEN, token).apply()
-
-    /*
-        getPreferences(Context.MODE_PRIVATE).edit().apply(){
-            putString(TAG_TOKEN, token).apply()
-        }
-
-        */
     }
 
-    private fun checkIfTokenAlreadyExist():String{
-        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
-        val token = sp.getString(TAG_TOKEN,"")
+    private fun launchMainActivity(){
+        MainActivity.launch(this)
+    }
 
-        token?.let {
-            return token
+    //Save in saveInPreferences
+    private fun saveDataInPreferences(mail: String, pass: String) {
+        getPreferences(Context.MODE_PRIVATE).edit().apply {
+            putString(TAG_EMAIL, mail).apply()
+            putString(TAG_PASSWROD, pass).apply()
+
         }
-        /*
+    }
+    //Retrieve
+    private fun loadDataFromPreferences() {
         getPreferences(Context.MODE_PRIVATE).apply {
-            val token = getString(TAG_TOKEN,"")
-            token?.let {
-                return token.isNotEmpty()
+            binding.etEmail.setText(getString(TAG_EMAIL, ""))
+            binding.etPassword.setText(getString(TAG_PASSWROD, ""))
+            if (binding.etEmail.text.toString() != "" && binding.etPassword.text.toString() != "") {
+                binding.cbSaveData.isChecked = true
             }
         }
-
-         */
-        return ""
     }
-
-    private fun launchMainActivity(token: String){
-        MainActivity.launch(this, token)
-    }
-
-    private fun skipLoginIfTokenExist(){
-        val token = checkIfTokenAlreadyExist()
-        if(token.isNotEmpty()){
-            launchMainActivity(token)
-        }
-    }
-
-
-
-
 }

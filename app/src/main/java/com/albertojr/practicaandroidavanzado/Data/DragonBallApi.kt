@@ -1,9 +1,9 @@
 package com.albertojr.practicaandroidavanzado.Data
 
+import retrofit2.http.Body
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
-import retrofit2.http.Path
+
 //const val empa:String = "" //TOdo change
 interface DragonBallApi {
     //Login
@@ -18,7 +18,9 @@ interface DragonBallApi {
     //Header -> inyected in use, like the login
     //Note to self: petition data = Bearer Token $TokenValue
    // This petition has a body name = "" in order to retrieve all the heroes
-    suspend fun retrieveHeroes(@Header("Authorization") petitionData: String): List<GetResponseHeroes>
+    suspend fun retrieveHeroes(@Header("Authorization") petitionData: String,
+                               @Body getHeroesRequestBody: GetHeroesRequestBody
+    ): List<GetHeroesResponse>
 
     //Update heroe favourite state
 

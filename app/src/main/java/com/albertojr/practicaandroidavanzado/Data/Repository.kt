@@ -8,4 +8,8 @@ class Repository {
         return remoteDataSource.performLogin(loginData)
     }
 
+    suspend fun getHeroes(): List<GetHeroesResponse>{
+        return remoteDataSource.getHeroes()
+    }
+
 }
