@@ -41,7 +41,7 @@ class FirstFragment : Fragment() {
         viewModel.heroes.observe(viewLifecycleOwner){
           Log.d("Fragment1 heroe list size", "${it.size}")
         }
-     //   viewModel.getHeroes()
+        viewModel.getHeroes()
 
 
 

@@ -4,16 +4,17 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivity
 import com.albertojr.practicaandroidavanzado.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private val viewModel = LoginViewModel()
-    private val TAG_TOKEN = "MyToken"
-    private val TAG_PREFERENCES = "MyPreferences"
+    private val viewModel : LoginViewModel by viewModels()
     private val TAG_EMAIL = "MyEmail"
     private val TAG_PASSWROD = "MyPassword"
 

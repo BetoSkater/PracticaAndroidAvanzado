@@ -12,15 +12,20 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
 import com.albertojr.practicaandroidavanzado.Data.Repository
 import com.albertojr.practicaandroidavanzado.UI.Login.LoginActivity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 //class MainActivityViewModel(private val token: String) : ViewModel() {
-class MainActivityViewModel() : ViewModel() {
+@HiltViewModel
+class MainActivityViewModel @Inject constructor(
+    private val repository :Repository
+
+) : ViewModel() {
 
 
-    private val repository = Repository()
 
 
     //TODO change the liveData from string list to heroesList

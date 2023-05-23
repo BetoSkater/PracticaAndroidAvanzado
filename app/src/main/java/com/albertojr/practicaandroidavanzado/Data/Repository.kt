@@ -1,9 +1,11 @@
 package com.albertojr.practicaandroidavanzado.Data
 
-class Repository {
+import javax.inject.Inject
 
-    private val remoteDataSource = RemoteDataSource()
-
+class Repository @Inject constructor(
+    private val remoteDataSource : RemoteDataSource
+)
+{
     suspend fun performLogin(loginData: String): String{
         return remoteDataSource.performLogin(loginData)
     }
