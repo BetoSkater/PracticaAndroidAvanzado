@@ -4,14 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
-import com.albertojr.practicaandroidavanzado.Data.Repository
-import com.albertojr.practicaandroidavanzado.UI.Login.LoginActivity
+import com.albertojr.practicaandroidavanzado.Data.RepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +16,7 @@ import javax.inject.Inject
 //class MainActivityViewModel(private val token: String) : ViewModel() {
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val repository :Repository
+    private val repositoryImpl :RepositoryImpl
 
 ) : ViewModel() {
 
@@ -38,7 +33,7 @@ class MainActivityViewModel @Inject constructor(
     fun getHeroes(){
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
-                repository.getHeroes()
+                repositoryImpl.getHeroes()
             }
             _heroes.value = result
         }

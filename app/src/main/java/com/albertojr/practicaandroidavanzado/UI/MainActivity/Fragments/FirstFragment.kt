@@ -37,13 +37,13 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+/*
         viewModel.heroes.observe(viewLifecycleOwner){
           Log.d("Fragment1 heroe list size", "${it.size}")
         }
         viewModel.getHeroes()
 
-
+*/
 
     }
 

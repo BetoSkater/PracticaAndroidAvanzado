@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.albertojr.practicaandroidavanzado.Data.Repository
+import com.albertojr.practicaandroidavanzado.Data.RepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val repository : Repository
+    private val repositoryImpl : RepositoryImpl
 
 
 ) : ViewModel() {
@@ -34,7 +34,7 @@ class LoginViewModel @Inject constructor(
             // because until the login is done, the user can't do anything
             //Ok, is not withContext because we are not assigning it to a val.
             val result = withContext(Dispatchers.IO){
-                repository.performLogin(headerAuthorizationData)
+                repositoryImpl.performLogin(headerAuthorizationData)
             }
 
             _login.value = result

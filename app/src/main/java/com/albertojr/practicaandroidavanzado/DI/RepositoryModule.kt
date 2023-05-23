@@ -1,7 +1,9 @@
 package com.albertojr.practicaandroidavanzado.DI
 
 import com.albertojr.practicaandroidavanzado.Data.RemoteDataSource
+import com.albertojr.practicaandroidavanzado.Data.RemoteDataSourceImpl
 import com.albertojr.practicaandroidavanzado.Data.Repository
+import com.albertojr.practicaandroidavanzado.Data.RepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -11,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
-    abstract  fun bindsRepository(repository: Repository): Repository
+    abstract  fun bindsRepository(repositoryImpl: RepositoryImpl): Repository
 
     /*
     @Binds
@@ -19,5 +21,5 @@ abstract class RepositoryModule {
     */
 
     @Binds
-    abstract fun bindsRemoteDataSource(remoteDataSource: RemoteDataSource): RemoteDataSource
+    abstract fun bindsRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource
 }
