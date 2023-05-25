@@ -22,8 +22,8 @@ class MainActivityViewModel @Inject constructor(
 
     //TODO change the liveData from string list to heroesList
     //LiveData states mannagers:
-    private val _heroes = MutableLiveData<List<GetHeroesResponse>>()
-    val heroes: LiveData<List<GetHeroesResponse>> get () = _heroes
+    private val _heroes = MutableLiveData<List<Heroe>>()
+    val heroes: LiveData<List<Heroe>> get () = _heroes
 
     //Retrieve heroes from API:
 

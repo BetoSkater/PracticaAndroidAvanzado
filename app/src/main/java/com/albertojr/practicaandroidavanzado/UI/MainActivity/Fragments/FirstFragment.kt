@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.albertojr.practicaandroidavanzado.R
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Adapters.RecyclerViewListAdapter
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
 import com.albertojr.practicaandroidavanzado.databinding.FragmentFirstBinding
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,9 +40,20 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = RecyclerViewListAdapter(){ heroeId:String ->
+            findNavController().navigate(
+                FirstFragmentDirections.actionFirstFragmentToSecondFragment(heroeId)
+            )
+        }
+        binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
+
+        binding.rvHeroesList.adapter = adapter
+        val test = mutableListOf<Heroe>(Heroe("1","yo", "jhj","jhjh",false),Heroe("1","yo", "jhj","jhjh",false))
+        adapter.submitList(test)
 
         viewModel.heroes.observe(viewLifecycleOwner){
           Log.d("Fragment1 heroe list size", "${it.size}")
+            adapter.submitList(it)
         }
        viewModel.getHeroes()
 

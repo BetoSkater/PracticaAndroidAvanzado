@@ -21,7 +21,10 @@
         android:name="com.albertojr.practicaandroidavanzado.UI.MainActivity.Fragments.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
+        <argument
+            android:name="heroe_id"
+            app:argType="string"
+            app:nullable="false"/>
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />

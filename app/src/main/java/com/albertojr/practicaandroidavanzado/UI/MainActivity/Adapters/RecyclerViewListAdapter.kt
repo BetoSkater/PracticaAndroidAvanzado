@@ -37,6 +37,10 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
            // heroe.isLiked //TODO add the show and hide fav in a function
 
             heroeName.text = heroe.name
+            heroeImage.maxWidth = 300
+            heroeImage.minimumWidth  = 300
+            heroeImage.maxHeight = 300
+            heroeImage.minimumHeight  = 300
         }
     }
     class HeroeDiffCallback: DiffUtil.ItemCallback<Heroe>() {

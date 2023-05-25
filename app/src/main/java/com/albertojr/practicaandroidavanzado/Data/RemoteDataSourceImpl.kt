@@ -26,23 +26,16 @@ private val api: DragonBallApi
     }
 
     override suspend fun getHeroes(): List<GetHeroesResponse>{
-        /*token?.let {
+        token?.let {
             if(token.isNotEmpty()){
                 val requestData = "Bearer $token"
-               // return api.retrieveHeroes(requestData, GetHeroesRequestBody())
+                return api.retrieveHeroes(requestData, GetHeroesRequestBody())
             }else{
                 return mutableListOf()
             }
-
+            //TODO Fix this method.
        }
         return mutableListOf()
-
-
-         */
-        val requestDAta = "Bearer eyJraWQiOiJwcml2YXRlIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJlbWFpbCI6ImFsYmVydG9qdW5xdWVyYS5yYUBnbWFpbC5jb20iLCJleHBpcmF0aW9uIjo2NDA5MjIxMTIwMCwiaWRlbnRpZnkiOiI5ODJEOTQ1OC02NDYyLTRCOUItOThEOC1GQ0Y5NDU1RkE0N0YifQ.XmMj6F3Ir4JhiiG89JxVqjDu_npoe-ZldzMJB3LDU1E"
-
-        return api.retrieveHeroes(requestDAta,GetHeroesRequestBody())
-
     }
 
 
