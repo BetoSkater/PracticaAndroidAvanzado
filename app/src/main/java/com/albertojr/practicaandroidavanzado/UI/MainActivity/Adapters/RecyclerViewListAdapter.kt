@@ -29,6 +29,13 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
         private val heroeFav = view.findViewById<ImageButton>(R.id.ibFavCell)
         private val heroeName = view.findViewById<TextView>(R.id.tvHeroeNameCell)
         //TODO On Click listener goes here
+
+        init{
+            view.setOnClickListener{
+                onClick(heroe.id)
+            }
+        }
+
         fun bind(heroe: Heroe){
             this.heroe = heroe
 
