@@ -30,6 +30,12 @@ object RemoteModule {
                 HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
                 .apply{
                     level = HttpLoggingInterceptor.Level.BASIC
+                    level = HttpLoggingInterceptor.Level.HEADERS
+                    level = HttpLoggingInterceptor.Level.BODY
+
+
+
+
                 }).build()
     }
 

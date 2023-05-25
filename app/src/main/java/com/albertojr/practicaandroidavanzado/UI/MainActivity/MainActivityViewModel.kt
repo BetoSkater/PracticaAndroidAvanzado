@@ -17,10 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val repositoryImpl :RepositoryImpl
-
 ) : ViewModel() {
-
-
 
 
     //TODO change the liveData from string list to heroesList

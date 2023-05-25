@@ -12,10 +12,12 @@ import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivity
 import com.albertojr.practicaandroidavanzado.databinding.FragmentFirstBinding
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -37,13 +39,13 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-/*
+
         viewModel.heroes.observe(viewLifecycleOwner){
           Log.d("Fragment1 heroe list size", "${it.size}")
         }
-        viewModel.getHeroes()
+       viewModel.getHeroes()
 
-*/
+
 
     }
 

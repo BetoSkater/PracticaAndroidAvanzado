@@ -15,8 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val repositoryImpl : RepositoryImpl
-
-
 ) : ViewModel() {
 
 

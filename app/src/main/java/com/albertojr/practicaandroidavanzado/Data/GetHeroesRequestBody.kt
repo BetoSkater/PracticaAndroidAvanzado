@@ -1,5 +1,5 @@
 package com.albertojr.practicaandroidavanzado.Data
 
-class GetHeroesRequestBody {
+data class GetHeroesRequestBody (
     val name: String = ""
-}
+    )
