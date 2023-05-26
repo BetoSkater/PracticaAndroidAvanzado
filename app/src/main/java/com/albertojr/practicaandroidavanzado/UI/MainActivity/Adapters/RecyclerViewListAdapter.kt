@@ -56,6 +56,12 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
                 placeholder(R.mipmap.placeholder) //TODO casca?
                 transformations(CircleCropTransformation())
             }
+
+            if(heroe.isFavourite){
+                heroeFav.setImageResource(R.mipmap.star_fill)
+            }else{
+                heroeFav.setImageResource(R.mipmap.star)
+            }
         }
     }
     class HeroeDiffCallback: DiffUtil.ItemCallback<Heroe>() {

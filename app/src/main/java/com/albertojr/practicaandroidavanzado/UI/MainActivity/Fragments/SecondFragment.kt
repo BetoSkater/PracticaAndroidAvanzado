@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.albertojr.practicaandroidavanzado.R
@@ -18,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-//TODO probably I should add a @Entripoint like in the list fragment
+//TODO probably I should add a @Entrypoint like in the list fragment
 @AndroidEntryPoint
 class SecondFragment : Fragment() {
 
@@ -44,12 +43,16 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvNameDetail.text = args.heroeId.toString()
+      //  binding.tvNameDetail.text = args.heroeId.toString()
 
         viewModel.heroe.observe(viewLifecycleOwner){
-            updataDetail(it)
+            updateDetail(it)
         }
         viewModel.getHeroe(args.heroeId)
+
+        binding.ibLikeDetail.setOnClickListener{
+            onFavButtonClicked()
+        }
 
     }
 
@@ -58,7 +61,7 @@ class SecondFragment : Fragment() {
         _binding = null
     }
 
-    private fun updataDetail(heroe: Heroe){
+    private fun updateDetail(heroe: Heroe){
         binding.ivHeroeDetail.load(heroe.picture){
             //TODO add modifiers in here
         }
@@ -69,6 +72,22 @@ class SecondFragment : Fragment() {
             binding.ibLikeDetail.load(R.mipmap.star_fill)
         }else{
             binding.ibLikeDetail.load(R.mipmap.star)
+        }
+    }
+    private fun onFavButtonClicked(){
+
+        if(viewModel.heroe.value != null){
+            val updatedHeroe = viewModel.heroe.value as Heroe //TODO review, danger dangerous.
+            updatedHeroe.let {
+                it.isFavourite = !it.isFavourite
+            }
+            if (updatedHeroe.isFavourite){
+                binding.ibLikeDetail.load(R.mipmap.star_fill)
+
+            }else{
+                binding.ibLikeDetail.load(R.mipmap.star)
+            }
+            viewModel.updateHeroeFavStateLocalAndRemote(updatedHeroe.id,updatedHeroe.isFavourite)
         }
     }
 }

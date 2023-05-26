@@ -38,6 +38,15 @@ private val api: DragonBallApi
         return mutableListOf()
     }
 
+    override suspend fun updateHeroeFavStateRemote(id: String, isFav: Boolean) {
+        token?.let {
+            if(token.isNotEmpty()){
+                val requestData = "Bearer $token"
+                api.updateHeroeFavStateRemote(requestData,GetFavRequestBody(id))
+
+            }
+        }
+    }
 
 
 }

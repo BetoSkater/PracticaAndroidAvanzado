@@ -10,4 +10,6 @@ interface LocalDataSource {
 
     suspend fun getHeroe(id: String): LocalHeroe
 
+    suspend fun updateHeroeFavStateLocal(id: String, isFav: Boolean)
+
 }

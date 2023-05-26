@@ -50,7 +50,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/ivHeroeImageCell"
                 app:layout_constraintTop_toTopOf="@+id/ivHeroeImageCell"
                 app:srcCompat="@mipmap/star"
-                app:tint="@color/blue_dragon" />
+                app:tint="@color/orange_dragon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

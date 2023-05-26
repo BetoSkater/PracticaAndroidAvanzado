@@ -7,4 +7,6 @@ interface Repository {
     suspend fun getHeroes(): List<Heroe>
 
     suspend fun  getHeroe(id:String): Heroe
+
+    suspend fun  updateHeroeFavStateLocalAndRemote(id: String, isFav:Boolean)
 }

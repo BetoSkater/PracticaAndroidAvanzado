@@ -5,7 +5,7 @@ data class Heroe(
     val name: String,
     val picture : String,
     val description : String,
-    val isFavourite : Boolean
+    var isFavourite : Boolean
 )
 //TODO Fix
 

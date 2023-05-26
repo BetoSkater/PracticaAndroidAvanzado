@@ -51,6 +51,12 @@ class MainActivityViewModel @Inject constructor(
         }
     }
 
+    fun updateHeroeFavStateLocalAndRemote(id: String, isFav: Boolean){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryImpl.updateHeroeFavStateLocalAndRemote(id, isFav)
+        }
+    }
+
     //TODO remove, keep just in case until it has to be removed.
      fun printToken(){
         //Log.d("MainViewModel", "The token in the MainViewModel has a value of $token")

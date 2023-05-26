@@ -32,7 +32,9 @@ interface DragonBallApi {
     //Header Bearer Token $token
     //Body: Heroe id
     //This petition does not return a value.
-    suspend fun heroeIsLiked(@Header("Authorization") petitionData: String)
+    suspend fun updateHeroeFavStateRemote(@Header("Authorization") petitionData: String,
+                             @Body getFavRequestBody: GetFavRequestBody
+                             )
 
 
 }

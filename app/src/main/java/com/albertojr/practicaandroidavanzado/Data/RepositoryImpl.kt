@@ -31,4 +31,11 @@ class RepositoryImpl @Inject constructor(
         return localHeroeToHeroe.mapFromLocalHeroeToHeroe(localDataSource.getHeroe(id))
     }
 
+    override suspend fun updateHeroeFavStateLocalAndRemote(id: String, isFav: Boolean) {
+        //Local
+            localDataSource.updateHeroeFavStateLocal(id, isFav)
+        //Remote
+            remoteDataSource.updateHeroeFavStateRemote(id, isFav)
+    }
+
 }

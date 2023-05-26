@@ -5,4 +5,6 @@ interface RemoteDataSource {
 
     suspend fun getHeroes(): List<GetHeroesResponse>
 
+    suspend fun updateHeroeFavStateRemote(id:String, isFav: Boolean)
+
 }

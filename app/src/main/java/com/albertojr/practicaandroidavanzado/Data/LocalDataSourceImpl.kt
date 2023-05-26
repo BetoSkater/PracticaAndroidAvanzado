@@ -15,4 +15,8 @@ class LocalDataSourceImpl @Inject constructor(private val dao: HeroeDAO): LocalD
         return dao.getHeroe(id)
     }
 
+    override suspend fun updateHeroeFavStateLocal(id: String, isFav: Boolean) {
+        dao.updateHeroeFavStateLocal(id,isFav)
+    }
+
 }
