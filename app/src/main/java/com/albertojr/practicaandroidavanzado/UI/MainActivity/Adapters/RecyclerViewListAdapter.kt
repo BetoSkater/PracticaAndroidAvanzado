@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
 import androidx.recyclerview.widget.ListAdapter
+import coil.load
+import coil.transform.CircleCropTransformation
+
 class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
     : ListAdapter<Heroe, RecyclerViewListAdapter.HeroeViewHolder>(HeroeDiffCallback())
 {
@@ -48,6 +51,11 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
             heroeImage.minimumWidth  = 300
             heroeImage.maxHeight = 300
             heroeImage.minimumHeight  = 300
+            heroeImage.load(heroe.picture){
+                crossfade(true)
+                placeholder(R.mipmap.placeholder) //TODO casca?
+                transformations(CircleCropTransformation())
+            }
         }
     }
     class HeroeDiffCallback: DiffUtil.ItemCallback<Heroe>() {

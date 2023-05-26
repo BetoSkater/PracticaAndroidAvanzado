@@ -46,8 +46,8 @@ class FirstFragment : Fragment() {
             )
         }
         binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
-
         binding.rvHeroesList.adapter = adapter
+
         val test = mutableListOf<Heroe>(Heroe("1","yo", "jhj","jhjh",false),Heroe("1","yo", "jhj","jhjh",false))
         adapter.submitList(test)
 
