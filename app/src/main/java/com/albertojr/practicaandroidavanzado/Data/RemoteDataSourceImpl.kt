@@ -48,5 +48,17 @@ private val api: DragonBallApi
         }
     }
 
+    override suspend fun retrieveHeroeLocations(id: String): List<GetLocationsResponse> {
+
+        token?.let {
+            if(token.isNotEmpty()){
+                val requestData = "Bearer $token"
+                return api.retrieveHeroeLocations(requestData, GetLocationRequestBody(id))
+            }
+            //TODO Fix this method.
+        }
+        return mutableListOf()
+    }
+
 
 }

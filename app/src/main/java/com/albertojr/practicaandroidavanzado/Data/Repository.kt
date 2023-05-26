@@ -1,5 +1,6 @@
 package com.albertojr.practicaandroidavanzado.Data
 
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Location
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
 
 interface Repository {
@@ -9,4 +10,6 @@ interface Repository {
     suspend fun  getHeroe(id:String): Heroe
 
     suspend fun  updateHeroeFavStateLocalAndRemote(id: String, isFav:Boolean)
+
+    suspend fun retrieveHeroeLocations(id: String): List<Location>
 }

@@ -29,6 +29,10 @@ class MainActivityViewModel @Inject constructor(
     private val _heroe = MutableLiveData<Heroe>()
     val heroe : LiveData<Heroe> get () = _heroe
 
+    //HeroeLocations
+    private val _locations = MutableLiveData<List<Location>>()
+    val locations : LiveData<List<Location>> get () = _locations
+
     //Retrieve heroes from API:
 
     fun getHeroes(){
@@ -55,6 +59,16 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repositoryImpl.updateHeroeFavStateLocalAndRemote(id, isFav)
         }
+    }
+
+    fun retrieveHeroeLocations(id: String){
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                repositoryImpl.retrieveHeroeLocations(id)
+            }
+            _locations.value = result
+        }
+
     }
 
     //TODO remove, keep just in case until it has to be removed.

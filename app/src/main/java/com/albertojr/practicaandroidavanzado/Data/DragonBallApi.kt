@@ -37,4 +37,11 @@ interface DragonBallApi {
                              )
 
 
+    //Retrieve heroe locations
+    @POST("/api/heros/locations")
+    //This call needs a header (token) and a body (hero id)
+    suspend fun retrieveHeroeLocations(@Header("Authorization") petitionData: String,
+                                       @Body getLocationRequestBody: GetLocationRequestBody
+                                       ): List<GetLocationsResponse>
+
 }
