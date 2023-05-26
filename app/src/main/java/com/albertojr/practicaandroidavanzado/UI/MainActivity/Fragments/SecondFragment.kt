@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.albertojr.practicaandroidavanzado.R
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
 import com.albertojr.practicaandroidavanzado.databinding.FragmentSecondBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,14 +46,29 @@ class SecondFragment : Fragment() {
 
         binding.tvNameDetail.text = args.heroeId.toString()
 
-        viewModel.heroes.observe(viewLifecycleOwner){
-
+        viewModel.heroe.observe(viewLifecycleOwner){
+            updataDetail(it)
         }
+        viewModel.getHeroe(args.heroeId)
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun updataDetail(heroe: Heroe){
+        binding.ivHeroeDetail.load(heroe.picture){
+            //TODO add modifiers in here
+        }
+        binding.tvNameDetail.text = heroe.name.toString()
+        binding.tvDescriptionDetail.text = heroe.description.toString()
+
+        if(heroe.isFavourite){
+            binding.ibLikeDetail.load(R.mipmap.star_fill)
+        }else{
+            binding.ibLikeDetail.load(R.mipmap.star)
+        }
     }
 }

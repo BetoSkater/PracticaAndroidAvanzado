@@ -8,10 +8,10 @@ import androidx.room.Query
 interface HeroeDAO {
     @Query("SELECT * FROM heroes")
     fun getAll():List<LocalHeroe>
-/*
-    @Query("SELECT * FROM heroes WHERE id IN (id)")
+
+    @Query("SELECT * FROM heroes WHERE id = :heroeID")
     fun getHeroe(heroeID: String): LocalHeroe
-*/
+
     @Insert
     fun insertAllHeroes(heroesList: List<LocalHeroe>)
 

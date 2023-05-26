@@ -27,4 +27,8 @@ class RepositoryImpl @Inject constructor(
         return localHeroeToHeroe.mapFromLocalHeroesToHeroes(localDataSource.getHeroes())
     }
 
+    override suspend fun getHeroe(id: String): Heroe {
+        return localHeroeToHeroe.mapFromLocalHeroeToHeroe(localDataSource.getHeroe(id))
+    }
+
 }

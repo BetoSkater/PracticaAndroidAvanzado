@@ -8,5 +8,6 @@ interface LocalDataSource {
 
     //TODO add more methods in here
 
+    suspend fun getHeroe(id: String): LocalHeroe
 
 }

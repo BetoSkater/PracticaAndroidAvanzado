@@ -9,7 +9,7 @@ class LocalHeroeToHeroe @Inject constructor() {
         return getLocalHeroeList.map {mapFromLocalHeroeToHeroe(it)}
     }
 
-    private  fun mapFromLocalHeroeToHeroe(getLocalHeroe: LocalHeroe): Heroe {
+    fun mapFromLocalHeroeToHeroe(getLocalHeroe: LocalHeroe): Heroe {
         return Heroe(getLocalHeroe.id,getLocalHeroe.name,getLocalHeroe.photo, getLocalHeroe.description,getLocalHeroe.favorite)
     }
 

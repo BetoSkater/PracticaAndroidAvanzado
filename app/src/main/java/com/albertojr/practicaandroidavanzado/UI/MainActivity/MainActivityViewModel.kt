@@ -20,10 +20,14 @@ class MainActivityViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    //TODO change the liveData from string list to heroesList
     //LiveData states mannagers:
+    //HeroesList
     private val _heroes = MutableLiveData<List<Heroe>>()
     val heroes: LiveData<List<Heroe>> get () = _heroes
+
+    //HeroeDetail
+    private val _heroe = MutableLiveData<Heroe>()
+    val heroe : LiveData<Heroe> get () = _heroe
 
     //Retrieve heroes from API:
 
@@ -36,10 +40,23 @@ class MainActivityViewModel @Inject constructor(
         }
     }
 
+    //Retrieve heroe with id
+
+    fun getHeroe(id: String){
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                repositoryImpl.getHeroe(id)
+            }
+            _heroe.value = result //TODO check later after setting all the methods
+        }
+    }
+
     //TODO remove, keep just in case until it has to be removed.
      fun printToken(){
         //Log.d("MainViewModel", "The token in the MainViewModel has a value of $token")
         Log.d("MainViewModel", "The token in the MainViewModel has a value of DELETE") //TODO delete
      }
+
+
 
 }
