@@ -1,5 +1,6 @@
 package com.albertojr.practicaandroidavanzado.UI.MainActivity.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.albertojr.practicaandroidavanzado.R
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
 import com.albertojr.practicaandroidavanzado.databinding.FragmentSecondBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,11 +65,27 @@ class SecondFragment : Fragment() {
             Log.d("LOC", "HeroeLocations = ${loc.longitud}")
         }
         viewModel.retrieveHeroeLocations(args.heroeId)
+/*
+        val hasPermission = ActivityCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION)
+
+
+ */
+ //TODO I don't need location in order to show markers on a map.
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
     }
 
     private fun updateDetail(heroe: Heroe){

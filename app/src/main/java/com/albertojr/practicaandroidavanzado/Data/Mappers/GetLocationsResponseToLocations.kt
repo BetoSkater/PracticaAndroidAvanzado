@@ -1,9 +1,7 @@
 package com.albertojr.practicaandroidavanzado.Data.Mappers
 
-import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
-import com.albertojr.practicaandroidavanzado.Data.GetLocationsResponse
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Location
+import com.albertojr.practicaandroidavanzado.Data.Remote.GetLocationsResponse
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Location
 import javax.inject.Inject
 
 class GetLocationsResponseToLocations @Inject constructor() {

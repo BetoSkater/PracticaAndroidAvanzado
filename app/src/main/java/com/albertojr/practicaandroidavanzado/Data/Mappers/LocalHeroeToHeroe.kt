@@ -1,7 +1,7 @@
 package com.albertojr.practicaandroidavanzado.Data.Mappers
 
-import com.albertojr.practicaandroidavanzado.Data.LocalHeroe
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.Data.Local.LocalHeroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import javax.inject.Inject
 
 class LocalHeroeToHeroe @Inject constructor() {

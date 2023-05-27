@@ -1,12 +1,5 @@
-package com.albertojr.practicaandroidavanzado.Data
+package com.albertojr.practicaandroidavanzado.Data.Remote
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,7 +9,7 @@ class RemoteDataSourceImpl @Inject constructor(
   //  private val okHttpClient =
 // private val retrofit =
 private val api: DragonBallApi
-) : RemoteDataSource{
+) : RemoteDataSource {
 
     private lateinit var token: String
 
@@ -42,7 +35,7 @@ private val api: DragonBallApi
         token?.let {
             if(token.isNotEmpty()){
                 val requestData = "Bearer $token"
-                api.updateHeroeFavStateRemote(requestData,GetFavRequestBody(id))
+                api.updateHeroeFavStateRemote(requestData, GetFavRequestBody(id))
 
             }
         }

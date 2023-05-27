@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
 import com.albertojr.practicaandroidavanzado.Data.RepositoryImpl
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Location
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

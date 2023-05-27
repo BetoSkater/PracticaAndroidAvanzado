@@ -1,9 +1,9 @@
 package com.albertojr.practicaandroidavanzado.DI
 
-import com.albertojr.practicaandroidavanzado.Data.LocalDataSource
-import com.albertojr.practicaandroidavanzado.Data.LocalDataSourceImpl
-import com.albertojr.practicaandroidavanzado.Data.RemoteDataSource
-import com.albertojr.practicaandroidavanzado.Data.RemoteDataSourceImpl
+import com.albertojr.practicaandroidavanzado.Data.Local.LocalDataSource
+import com.albertojr.practicaandroidavanzado.Data.Local.LocalDataSourceImpl
+import com.albertojr.practicaandroidavanzado.Data.Remote.RemoteDataSource
+import com.albertojr.practicaandroidavanzado.Data.Remote.RemoteDataSourceImpl
 import com.albertojr.practicaandroidavanzado.Data.Repository
 import com.albertojr.practicaandroidavanzado.Data.RepositoryImpl
 import dagger.Binds

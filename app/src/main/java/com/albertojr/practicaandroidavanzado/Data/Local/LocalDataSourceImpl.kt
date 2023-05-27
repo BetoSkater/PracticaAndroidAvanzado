@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado.Data
+package com.albertojr.practicaandroidavanzado.Data.Local
 
 import javax.inject.Inject
 

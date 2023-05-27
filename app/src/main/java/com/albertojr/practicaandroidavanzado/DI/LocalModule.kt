@@ -2,8 +2,8 @@ package com.albertojr.practicaandroidavanzado.DI
 
 import android.content.Context
 import androidx.room.Room
-import com.albertojr.practicaandroidavanzado.Data.HeroeDAO
-import com.albertojr.practicaandroidavanzado.Data.HeroeDatabase
+import com.albertojr.practicaandroidavanzado.Data.Local.HeroeDAO
+import com.albertojr.practicaandroidavanzado.Data.Local.HeroeDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import dagger.hilt.components.SingletonComponent
 object LocalModule {
 
     @Provides
-    fun privideHeroeDatabase(@ApplicationContext context: Context): HeroeDatabase{
+    fun privideHeroeDatabase(@ApplicationContext context: Context): HeroeDatabase {
         return Room.databaseBuilder(
             context,
             HeroeDatabase::class.java, "heroe-db"
@@ -23,7 +23,7 @@ object LocalModule {
     }
 
     @Provides
-    fun provideDAO(db: HeroeDatabase): HeroeDAO{
+    fun provideDAO(db: HeroeDatabase): HeroeDAO {
         return db.heroeDao()
     }
 

@@ -1,7 +1,7 @@
 package com.albertojr.practicaandroidavanzado.Data.Mappers
 
-import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.Data.Remote.GetHeroesResponse
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import javax.inject.Inject
 
 class GetHeroesResponseToHeroe @Inject constructor() {
@@ -9,7 +9,7 @@ class GetHeroesResponseToHeroe @Inject constructor() {
         return getHeroeResponseList.map {mapFromGetHeroeResponseToHeroe(it)}
     }
 
-  private  fun mapFromGetHeroeResponseToHeroe(getHeroeResponse: GetHeroesResponse): Heroe{
+  private  fun mapFromGetHeroeResponseToHeroe(getHeroeResponse: GetHeroesResponse): Heroe {
         return Heroe(getHeroeResponse.id,getHeroeResponse.name,getHeroeResponse.photo, getHeroeResponse.description,getHeroeResponse.favorite)
     }
 }

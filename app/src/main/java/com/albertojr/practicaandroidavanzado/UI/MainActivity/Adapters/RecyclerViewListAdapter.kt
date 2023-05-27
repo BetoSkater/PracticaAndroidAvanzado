@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.albertojr.practicaandroidavanzado.R
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import coil.transform.CircleCropTransformation

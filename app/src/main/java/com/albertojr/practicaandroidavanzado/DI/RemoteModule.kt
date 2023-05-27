@@ -1,6 +1,6 @@
 package com.albertojr.practicaandroidavanzado.DI
 
-import com.albertojr.practicaandroidavanzado.Data.DragonBallApi
+import com.albertojr.practicaandroidavanzado.Data.Remote.DragonBallApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -50,7 +50,7 @@ object RemoteModule {
     }
 
     @Provides
-    fun provideApi(retrofit: Retrofit): DragonBallApi{
+    fun provideApi(retrofit: Retrofit): DragonBallApi {
         return retrofit.create(DragonBallApi::class.java)
     }
 

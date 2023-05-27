@@ -1,11 +1,13 @@
 package com.albertojr.practicaandroidavanzado.Data
 
+import com.albertojr.practicaandroidavanzado.Data.Local.LocalDataSource
 import com.albertojr.practicaandroidavanzado.Data.Mappers.GetHeroesResponseToHeroe
 import com.albertojr.practicaandroidavanzado.Data.Mappers.GetHeroesResponseToLocalHeroe
 import com.albertojr.practicaandroidavanzado.Data.Mappers.GetLocationsResponseToLocations
 import com.albertojr.practicaandroidavanzado.Data.Mappers.LocalHeroeToHeroe
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Location
+import com.albertojr.practicaandroidavanzado.Data.Remote.RemoteDataSource
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Location
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(

@@ -1,8 +1,7 @@
 package com.albertojr.practicaandroidavanzado.Data.Mappers
 
-import com.albertojr.practicaandroidavanzado.Data.GetHeroesResponse
-import com.albertojr.practicaandroidavanzado.Data.LocalHeroe
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.Data.Remote.GetHeroesResponse
+import com.albertojr.practicaandroidavanzado.Data.Local.LocalHeroe
 import javax.inject.Inject
 
 class GetHeroesResponseToLocalHeroe @Inject constructor() {

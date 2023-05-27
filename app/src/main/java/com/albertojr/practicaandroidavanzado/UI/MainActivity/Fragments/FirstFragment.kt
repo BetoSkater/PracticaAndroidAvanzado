@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.Adapters.RecyclerViewListAdapter
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import com.albertojr.practicaandroidavanzado.databinding.FragmentFirstBinding
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +48,10 @@ class FirstFragment : Fragment() {
         binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
         binding.rvHeroesList.adapter = adapter
 
-        val test = mutableListOf<Heroe>(Heroe("1","yo", "jhj","jhjh",false),Heroe("1","yo", "jhj","jhjh",false))
+        val test = mutableListOf<Heroe>(
+            Heroe("1","yo", "jhj","jhjh",false),
+            Heroe("1","yo", "jhj","jhjh",false)
+        )
         adapter.submitList(test)
 
         viewModel.heroes.observe(viewLifecycleOwner){

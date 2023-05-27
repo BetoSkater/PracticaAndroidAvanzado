@@ -1,4 +1,4 @@
-package com.albertojr.practicaandroidavanzado.UI.MainActivity
+package com.albertojr.practicaandroidavanzado.UI.MainActivity.Model
 
 data class Location(
     val id: String,

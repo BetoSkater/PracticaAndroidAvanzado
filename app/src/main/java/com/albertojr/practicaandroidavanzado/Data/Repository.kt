@@ -1,7 +1,7 @@
 package com.albertojr.practicaandroidavanzado.Data
 
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Location
-import com.albertojr.practicaandroidavanzado.UI.MainActivity.Heroe
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Location
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 
 interface Repository {
     suspend fun performLogin(loginData: String): String

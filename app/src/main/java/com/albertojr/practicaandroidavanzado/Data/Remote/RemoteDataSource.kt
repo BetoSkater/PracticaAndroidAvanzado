@@ -1,4 +1,7 @@
-package com.albertojr.practicaandroidavanzado.Data
+package com.albertojr.practicaandroidavanzado.Data.Remote
+
+import com.albertojr.practicaandroidavanzado.Data.Remote.GetHeroesResponse
+import com.albertojr.practicaandroidavanzado.Data.Remote.GetLocationsResponse
 
 interface RemoteDataSource {
     suspend fun performLogin(loginData:String): String
