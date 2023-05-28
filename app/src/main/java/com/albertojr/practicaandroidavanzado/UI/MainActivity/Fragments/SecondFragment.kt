@@ -66,7 +66,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
         }
 
         viewModel.locations.observe(viewLifecycleOwner){
-           val loc = it[0]
+            val loc = it[0]
             Log.d("LOC", "Heroeid = ${args.heroeId}")
             Log.d("LOC", "Number of locations = ${it.size}")
 
@@ -79,6 +79,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
             it.forEach { location ->
                 setMarker(location)
             }
+
         }
         viewModel.retrieveHeroeLocations(args.heroeId)
 /*
@@ -109,7 +110,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun updateDetail(heroe: Heroe){
-
+/*
         if(heroe.picture.startsWith("http://")){
             binding.ivHeroeDetail.load(R.mipmap.placeholder){
                 //TODO add modifiers in here
@@ -120,6 +121,11 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
+ */
+
+        binding.ivHeroeDetail.load(heroe.picture){
+            //TODO add modifiers in here
+        }
 
         binding.tvNameDetail.text = heroe.name.toString()
         binding.tvDescriptionDetail.text = heroe.description.toString()

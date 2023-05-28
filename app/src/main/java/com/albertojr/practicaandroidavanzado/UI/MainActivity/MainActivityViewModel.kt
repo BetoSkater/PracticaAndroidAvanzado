@@ -67,7 +67,10 @@ class MainActivityViewModel @Inject constructor(
             val result = withContext(Dispatchers.IO){
                 repositoryImpl.retrieveHeroeLocations(id)
             }
-            _locations.value = result
+            if (result.isNotEmpty()){
+                _locations.value = result
+            }
+
         }
 
     }

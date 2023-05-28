@@ -6,7 +6,7 @@ import com.albertojr.practicaandroidavanzado.Data.Remote.RemoteDataSource
 
 class FakeRemoteDataSource: RemoteDataSource {
     override suspend fun performLogin(loginData: String): String {
-        return generateFakeToken2()
+        return generateFakeToken()
     }
 
     override suspend fun getHeroes(): List<GetHeroesResponse> {

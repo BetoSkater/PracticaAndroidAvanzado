@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:name=".AppClass"
         android:theme="@style/Theme.PracticaAndroidAvanzado"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".UI.MainActivity.MainActivity"

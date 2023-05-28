@@ -51,7 +51,7 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
             heroeImage.minimumWidth  = 300
             heroeImage.maxHeight = 300
             heroeImage.minimumHeight  = 300
-
+/*
             if(heroe.picture.startsWith("http://")){
                 heroeImage.load(R.mipmap.placeholder)
             }else{
@@ -60,6 +60,13 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
                     placeholder(R.mipmap.placeholder) //TODO casca?
                     transformations(CircleCropTransformation())
                 }
+            }
+
+ */
+            heroeImage.load(heroe.picture) {
+                crossfade(true)
+                placeholder(R.mipmap.placeholder) //TODO casca?
+                transformations(CircleCropTransformation())
             }
             if(heroe.isFavourite){
                 heroeFav.setImageResource(R.mipmap.star_fill)
