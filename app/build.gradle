@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id("androidx.navigation.safeargs")
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
     id "kotlin-kapt" //This one must be the last one or warnings and errors will arise!
 }
 
@@ -67,6 +69,10 @@ dependencies {
 
     //Coil (for images)
     implementation("io.coil-kt:coil:2.4.0")
+
+    //Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation("com.squareup.okhttp3:mockwebserver:4.2.0") //MockWebServer

@@ -14,6 +14,12 @@ import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
 import com.albertojr.practicaandroidavanzado.databinding.FragmentSecondBinding
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -21,9 +27,11 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 //TODO probably I should add a @Entrypoint like in the list fragment
 @AndroidEntryPoint
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentSecondBinding? = null
+    private lateinit var map: GoogleMap
+
 
     private val args : SecondFragmentArgs by navArgs()
     private val viewModel:MainActivityViewModel by viewModels()
@@ -73,6 +81,10 @@ class SecondFragment : Fragment() {
 
  */
  //TODO I don't need location in order to show markers on a map.
+
+        val mapFragment = childFragmentManager
+            .findFragmentById(R.id.mapDetail) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
 
@@ -116,5 +128,18 @@ class SecondFragment : Fragment() {
             }
             viewModel.updateHeroeFavStateLocalAndRemote(updatedHeroe.id,updatedHeroe.isFavourite)
         }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        map.addMarker(
+            MarkerOptions()
+            .position(sydney)
+            .title("Marker in Sydney"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
     }
 }
