@@ -13,6 +13,7 @@ import coil.load
 import com.albertojr.practicaandroidavanzado.R
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Heroe
 import com.albertojr.practicaandroidavanzado.UI.MainActivity.MainActivityViewModel
+import com.albertojr.practicaandroidavanzado.UI.MainActivity.Model.Location
 import com.albertojr.practicaandroidavanzado.databinding.FragmentSecondBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -66,11 +67,18 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.locations.observe(viewLifecycleOwner){
            val loc = it[0]
+            Log.d("LOC", "Heroeid = ${args.heroeId}")
+            Log.d("LOC", "Number of locations = ${it.size}")
+
             Log.d("LOC", "HeroeLocations = $loc")
             Log.d("LOC", "HeroeLocations = ${loc.id}")
             Log.d("LOC", "HeroeLocations = ${loc.dateShow}")
             Log.d("LOC", "HeroeLocations = ${loc.latitud}")
             Log.d("LOC", "HeroeLocations = ${loc.longitud}")
+
+            it.forEach { location ->
+                setMarker(location)
+            }
         }
         viewModel.retrieveHeroeLocations(args.heroeId)
 /*
@@ -101,9 +109,18 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun updateDetail(heroe: Heroe){
-        binding.ivHeroeDetail.load(heroe.picture){
-            //TODO add modifiers in here
+
+        if(heroe.picture.startsWith("http://")){
+            binding.ivHeroeDetail.load(R.mipmap.placeholder){
+                //TODO add modifiers in here
+            }
+        }else{
+            binding.ivHeroeDetail.load(heroe.picture){
+                //TODO add modifiers in here
+            }
         }
+
+
         binding.tvNameDetail.text = heroe.name.toString()
         binding.tvDescriptionDetail.text = heroe.description.toString()
 
@@ -132,7 +149,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-
+/*
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         map.addMarker(
@@ -140,6 +157,18 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
             .position(sydney)
             .title("Marker in Sydney"))
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+*/
+    }
+
+    private fun setMarker(location: Location){
+        val loc = LatLng(location.longitud, location.latitud)
+        map.addMarker(
+            MarkerOptions()
+                .position(loc)
+                .title(location.dateShow)
+
+        )
+        map.moveCamera(CameraUpdateFactory.newLatLng(loc))
 
     }
 }
