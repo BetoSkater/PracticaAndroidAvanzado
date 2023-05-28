@@ -40,6 +40,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val adapter = RecyclerViewListAdapter(){ heroeId:String ->
             findNavController().navigate(
                 FirstFragmentDirections.actionFirstFragmentToSecondFragment(heroeId)

@@ -47,4 +47,5 @@
     <string name="login_password_hint">Password</string>
     <string name="login_seve_session_data">Save sassion data to skip login screen.</string>
     <string name="login_login_button">Login</string>
+    <string name="dragon_ball_encyclopedia">Dragon Ball Encyclopedia</string>
 </resources>
