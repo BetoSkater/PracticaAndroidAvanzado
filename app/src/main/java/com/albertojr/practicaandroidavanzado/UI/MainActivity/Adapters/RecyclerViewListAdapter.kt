@@ -31,7 +31,6 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
         private val heroeImage = view.findViewById<ImageView>(R.id.ivHeroeImageCell)
         private val heroeFav = view.findViewById<ImageButton>(R.id.ibFavCell)
         private val heroeName = view.findViewById<TextView>(R.id.tvHeroeNameCell)
-        //TODO On Click listener goes here
 
         init{
             view.setOnClickListener{
@@ -42,27 +41,11 @@ class RecyclerViewListAdapter(private val onClick: (String) -> (Unit))
         fun bind(heroe: Heroe){
             this.heroe = heroe
 
-           //TODO use image library used by teacher not glide or picasso// heroeImage =
-
-           // heroe.isLiked //TODO add the show and hide fav in a function
-
             heroeName.text = heroe.name
             heroeImage.maxWidth = 300
             heroeImage.minimumWidth  = 300
             heroeImage.maxHeight = 300
             heroeImage.minimumHeight  = 300
-/*
-            if(heroe.picture.startsWith("http://")){
-                heroeImage.load(R.mipmap.placeholder)
-            }else{
-                heroeImage.load(heroe.picture){
-                    crossfade(true)
-                    placeholder(R.mipmap.placeholder) //TODO casca?
-                    transformations(CircleCropTransformation())
-                }
-            }
-
- */
             heroeImage.load(heroe.picture) {
                 crossfade(true)
                 placeholder(R.mipmap.placeholder) //TODO casca?

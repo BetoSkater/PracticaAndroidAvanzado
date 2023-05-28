@@ -15,9 +15,9 @@ interface HeroeDAO {
     @Insert
     fun insertAllHeroes(heroesList: List<LocalHeroe>)
 
-//    @Update
+    //    @Update
 //    fun updateHeroeFavStateLocal(herieId: String, isFav:Boolean)
     @Query("UPDATE heroes SET favorite=:isFav WHERE id=:herieId")
     fun updateHeroeFavStateLocal(herieId: String, isFav:Boolean)
-//TODO ask is update is better to change all the values but the id
+//TODO ask if update is better to change all the values but the id
 }

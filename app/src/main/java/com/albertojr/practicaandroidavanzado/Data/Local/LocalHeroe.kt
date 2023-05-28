@@ -11,4 +11,4 @@ data class LocalHeroe(
     @ColumnInfo(name = "photo") val photo: String,
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "favorite") val favorite: Boolean,
-        )
+)

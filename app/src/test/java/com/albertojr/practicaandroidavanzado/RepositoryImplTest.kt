@@ -42,13 +42,10 @@ class RepositoryImplTest {
             getLocationsResponseToLocations)
     }
 
-
     @Test
     fun `(FAKE TEST Generated Token Slow Test)WHEN performLoging EXPECT succesfull response and token generated `() = runTest{
-      //  coEvery { remoteDataSource.performLogin("dfgsdf") } returns generateFakeToken()
+        //  coEvery { remoteDataSource.performLogin("dfgsdf") } returns generateFakeToken()
         val token = remoteDataSource.performLogin("asas")
         assert(token.isNotEmpty())
     }
-
-
 }

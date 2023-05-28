@@ -12,4 +12,5 @@
     <string name="login_seve_session_data">Guardar los datos de sesión para hacer autologin.</string>
     <string name="login_login_button">Acceder</string>
     <string name="dragon_ball_encyclopedia">Enciclopedia Dragon Ball</string>
+    <string name="heroe_detail">Detalle</string>
 </resources>

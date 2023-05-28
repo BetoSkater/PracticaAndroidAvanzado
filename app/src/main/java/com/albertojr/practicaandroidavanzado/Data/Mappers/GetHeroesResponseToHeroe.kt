@@ -9,7 +9,7 @@ class GetHeroesResponseToHeroe @Inject constructor() {
         return getHeroeResponseList.map {mapFromGetHeroeResponseToHeroe(it)}
     }
 
-  private  fun mapFromGetHeroeResponseToHeroe(getHeroeResponse: GetHeroesResponse): Heroe {
+    private  fun mapFromGetHeroeResponseToHeroe(getHeroeResponse: GetHeroesResponse): Heroe {
         return Heroe(getHeroeResponse.id,getHeroeResponse.name,getHeroeResponse.photo, getHeroeResponse.description,getHeroeResponse.favorite)
     }
 }

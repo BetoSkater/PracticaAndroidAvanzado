@@ -54,7 +54,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-      //  binding.tvNameDetail.text = args.heroeId.toString()
+        //  binding.tvNameDetail.text = args.heroeId.toString()
 
         viewModel.heroe.observe(viewLifecycleOwner){
             updateDetail(it)
@@ -69,7 +69,6 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
             val loc = it[0]
             Log.d("LOC", "Heroeid = ${args.heroeId}")
             Log.d("LOC", "Number of locations = ${it.size}")
-
             Log.d("LOC", "HeroeLocations = $loc")
             Log.d("LOC", "HeroeLocations = ${loc.id}")
             Log.d("LOC", "HeroeLocations = ${loc.dateShow}")
@@ -82,50 +81,24 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
 
         }
         viewModel.retrieveHeroeLocations(args.heroeId)
-/*
-        val hasPermission = ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_FINE_LOCATION)
-
-
- */
- //TODO I don't need location in order to show markers on a map.
 
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.mapDetail) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
     }
 
     private fun updateDetail(heroe: Heroe){
-/*
-        if(heroe.picture.startsWith("http://")){
-            binding.ivHeroeDetail.load(R.mipmap.placeholder){
-                //TODO add modifiers in here
-            }
-        }else{
-            binding.ivHeroeDetail.load(heroe.picture){
-                //TODO add modifiers in here
-            }
-        }
 
- */
-
-        binding.ivHeroeDetail.load(heroe.picture){
-            //TODO add modifiers in here
-        }
+        binding.ivHeroeDetail.load(heroe.picture){}
 
         binding.tvNameDetail.text = heroe.name.toString()
         binding.tvDescriptionDetail.text = heroe.description.toString()
@@ -155,15 +128,6 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-/*
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(
-            MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-*/
     }
 
     private fun setMarker(location: Location){
@@ -172,9 +136,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
             MarkerOptions()
                 .position(loc)
                 .title(location.dateShow)
-
         )
         map.moveCamera(CameraUpdateFactory.newLatLng(loc))
-
     }
 }

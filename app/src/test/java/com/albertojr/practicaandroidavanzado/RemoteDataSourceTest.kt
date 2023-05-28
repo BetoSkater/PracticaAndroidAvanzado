@@ -14,8 +14,21 @@ class RemoteDataSourceTest: BaseNetworkMockTest() {
         //WHEN:
         val token = remoteDataSource.performLogin("Basic ....")
 
-        //
+        //Expect
         assert(token.isNotEmpty())
     }
 
+    @Test
+    fun `When retrieving locations Expect successful response And a locations list`() = runTest {
+        //Given:
+        val remoteDataSource = RemoteDataSourceImpl(api)
+        remoteDataSource.token = "ajsjaskajs"
+
+        //When:
+        val locations = remoteDataSource.retrieveHeroeLocations("adkahduhadwawjdhnal")
+
+        //Expect:
+        assert(locations.size == 2)
+        assert(locations[0].id.isNotEmpty())
+    }
 }

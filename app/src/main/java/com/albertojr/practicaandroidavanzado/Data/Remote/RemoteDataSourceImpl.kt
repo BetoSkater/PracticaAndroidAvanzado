@@ -5,17 +5,17 @@ import javax.inject.Singleton
 
 @Singleton
 class RemoteDataSourceImpl @Inject constructor(
-  //  private val moshi :
-  //  private val okHttpClient =
+    //  private val moshi :
+    //  private val okHttpClient =
 // private val retrofit =
-private val api: DragonBallApi
+    private val api: DragonBallApi
 ) : RemoteDataSource {
-
-    private lateinit var token: String
+    //The token is set to public to facilitate testing.
+    public lateinit var token: String
 
     override suspend fun performLogin(loginData:String): String{
         this.token = api.performLogin(loginData)
-       return token
+        return token
     }
 
     override suspend fun getHeroes(): List<GetHeroesResponse>{
@@ -26,8 +26,8 @@ private val api: DragonBallApi
             }else{
                 return mutableListOf()
             }
-            //TODO Fix this method.
-       }
+            //TODO Fix this method. I'm not sure which refactorization would be the best.
+        }
         return mutableListOf()
     }
 
@@ -52,6 +52,5 @@ private val api: DragonBallApi
         }
         return mutableListOf()
     }
-
 
 }

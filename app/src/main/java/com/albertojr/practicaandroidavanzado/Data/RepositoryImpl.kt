@@ -38,15 +38,14 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun updateHeroeFavStateLocalAndRemote(id: String, isFav: Boolean) {
         //Local
-            localDataSource.updateHeroeFavStateLocal(id, isFav)
+        localDataSource.updateHeroeFavStateLocal(id, isFav)
         //Remote
-            remoteDataSource.updateHeroeFavStateRemote(id, isFav)
+        remoteDataSource.updateHeroeFavStateRemote(id, isFav)
     }
 
     override suspend fun retrieveHeroeLocations(id: String): List<Location> {
         return getLocationsResponseToLocations
             .mapFromGetLocationsResponseToLocations(remoteDataSource.retrieveHeroeLocations(id))
     }
-
 
 }

@@ -70,17 +70,6 @@ class MainActivityViewModel @Inject constructor(
             if (result.isNotEmpty()){
                 _locations.value = result
             }
-
         }
-
     }
-
-    //TODO remove, keep just in case until it has to be removed.
-     fun printToken(){
-        //Log.d("MainViewModel", "The token in the MainViewModel has a value of $token")
-        Log.d("MainViewModel", "The token in the MainViewModel has a value of DELETE") //TODO delete
-     }
-
-
-
 }

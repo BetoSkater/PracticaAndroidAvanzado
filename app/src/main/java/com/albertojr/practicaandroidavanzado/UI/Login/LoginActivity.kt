@@ -25,13 +25,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    //    skipLoginIfTokenExist()
         loadDataFromPreferences()
-        //Retrieving performLogin result
+
         viewModel.login.observe(this){
             Log.d("LOGIN", it.toString())
             if(binding.cbSaveData.isChecked){
-             //   saveTokenInSharedPreferences(it)
                 saveDataInPreferences(binding.etEmail.text.toString(),binding.etPassword.text.toString())
                 launchMainActivity()
             }else{
@@ -41,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btLogin.setOnClickListener{
-            //TODO add validations
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             if(!email.isEmpty() && !password.isEmpty()){

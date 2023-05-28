@@ -4,6 +4,7 @@ import com.albertojr.practicaandroidavanzado.Data.Local.LocalDataSource
 import com.albertojr.practicaandroidavanzado.Data.Local.LocalHeroe
 
 class FakeLocalDataSource: LocalDataSource {
+    //Not used. Needed for the repository
     override suspend fun getHeroes(): List<LocalHeroe> {
         TODO("Not yet implemented")
     }

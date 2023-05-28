@@ -28,15 +28,12 @@ object RemoteModule {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-                .apply{
-                    level = HttpLoggingInterceptor.Level.BASIC
-                    level = HttpLoggingInterceptor.Level.HEADERS
-                    level = HttpLoggingInterceptor.Level.BODY
+                    .apply{
+                        level = HttpLoggingInterceptor.Level.BASIC
+                        level = HttpLoggingInterceptor.Level.HEADERS
+                        level = HttpLoggingInterceptor.Level.BODY
 
-
-
-
-                }).build()
+                    }).build()
     }
 
     @Provides

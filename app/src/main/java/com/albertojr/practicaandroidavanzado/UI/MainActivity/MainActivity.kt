@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object{
-            fun launch(context: Context){
+        fun launch(context: Context){
             val intent = Intent(context,MainActivity::class.java)
             context.startActivity(intent)
         }
@@ -50,9 +50,6 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
     }
-
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -74,17 +71,5 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
-/*
-
-    fun retrieveTokenFromSharedPreferences(): String {
-
-        val sp = getSharedPreferences(TAG_PREFERENCES, MODE_PRIVATE)
-        return sp.getString(TAG_TOKEN, "").toString()
-    }
-
-
- */
-
 
 }

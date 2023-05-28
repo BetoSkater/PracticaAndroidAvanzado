@@ -5,7 +5,8 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
 import java.net.HttpURLConnection
 import java.util.concurrent.TimeUnit
-
+import com.google.common.io.Resources
+import java.io.File
 class DragonBallApiMockDispatcher : Dispatcher() {
     override fun dispatch(request: RecordedRequest): MockResponse {
         return when (request.path) {
@@ -13,15 +14,28 @@ class DragonBallApiMockDispatcher : Dispatcher() {
             "/api/auth/login" -> {
                 MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_OK)
-                        //Login call needs a header
+                    //Login call needs a header
                     .setHeader("Authorization", "Basic XdFa12313SSDASdewfawn2DFASD")
-                        //This call has no body, but, where do I give the token back?
+                    //This call has no body, but, where do I give the token back?
                     .setBody("EcFasF4554as.XCasjqASD138u2323.ADAWFGGAç58WDA5.12314SASADAWDA ")
-                    //TODO the real call doesn't have a body
+                //TODO Aqui tengo una duda, la llamada real no tiene body, pero ni no le pongo un body
+                //El token, el test falla.
 
             }
+            "/api/heros/locations" -> {
+                MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setHeader("Authorization", "Bearer XdFa12313SSDASdewfawn2DFASD")
+                    .setBody(getJson("json/location.json"))
 
+            }
             else -> MockResponse().throttleBody(1024, 5, TimeUnit.SECONDS)
         }
+    }
+
+    private fun getJson(path: String): String {
+        val uri = Resources.getResource(path)
+        val file = File(uri.path)
+        return String(file.readBytes())
     }
 }

@@ -7,5 +7,4 @@ data class Heroe(
     val description : String,
     var isFavourite : Boolean
 )
-//TODO Fix
 

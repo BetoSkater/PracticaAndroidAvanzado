@@ -40,8 +40,6 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         val adapter = RecyclerViewListAdapter(){ heroeId:String ->
             findNavController().navigate(
                 FirstFragmentDirections.actionFirstFragmentToSecondFragment(heroeId)
@@ -50,26 +48,16 @@ class FirstFragment : Fragment() {
         binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
         binding.rvHeroesList.adapter = adapter
 
-        val test = mutableListOf<Heroe>(
-            Heroe("1","yo", "jhj","jhjh",false),
-            Heroe("1","yo", "jhj","jhjh",false)
-        )
-        adapter.submitList(test)
-
         viewModel.heroes.observe(viewLifecycleOwner){
-          Log.d("Fragment1 heroe list size", "${it.size}")
+            Log.d("Fragment1 heroe list size", "${it.size}")
             adapter.submitList(it)
         }
-       viewModel.getHeroes()
-
-
-
+        viewModel.getHeroes()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }
